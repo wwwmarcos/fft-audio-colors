@@ -77,13 +77,11 @@ function setup ({ audioCtx, player, filteredPlayer }) {
   const analyser = FFTAnalyser({ audioCtx })
   const filterAnalyser = FFTAnalyser({ audioCtx })
 
-  // connect filters
+  // connect filters and analyzsers
   filteredSrc.connect(lowPassFilter)
   lowPassFilter.connect(lowshelfFilter)
   lowshelfFilter.connect(gain)
   gain.connect(filterAnalyser)
-
-  // piping original audio with the audio output
   src.connect(analyser)
   analyser.connect(audioCtx.destination)
 
